@@ -1,36 +1,20 @@
 \documentclass[A4]{ltxdoc}
-\usepackage{gitinfo2}
+\usepackage[mark]{gitinfo2}
 \usepackage{markdown}   
 \usepackage{fontawesome} 
 \usepackage{hyperref, xcolor}
 \usepackage{color}
 \hypersetup{colorlinks=true, linkcolor=myblue, urlcolor=myblue,hyperindex}
-\usepackage{fancyhdr}
 \usepackage{url}
 \usepackage[utf8]{inputenc}
 \definecolor{myblue}{rgb}{0.22,0.45,0.70}
-
-\fancypagestyle{plain}{
-    \fancyhf{} % sets both header and footer to nothing
-    \renewcommand{\headrulewidth}{0pt}
-    \fancyfoot[C]{
-         \textsf{
-        {\color{gray}
-        \faGit~\textbullet{}
-            Branch: \gitBranch\,@\,\gitAbbrevHash{}
-            Release:\gitReln{} (\gitAuthorDate)}\\
-            \vspace{1em}
-            Page \thepage
-        } 
-    }
-}
-
-\pagestyle{plain} 
+\renewcommand{\gitMarkPref}{\faGit}
 
 \begin{document}
 \thispagestyle{plain}
 \title{gitinfo2 and latexmk integration}
-
+\renewcommand{\gitMark}{
+Release:\gitReln{}: \gitAbbrevHash{} (\gitAuthorDate)}
 \author{%
   Raphaël P. Barazzutti\thanks{%
     URL: \href{https://github.com/rbarazzutti/gitinfo2-latexmk}{github.com/rbarazzutti/gitinfo2-latexmk};

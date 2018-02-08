@@ -24,4 +24,4 @@ In your LaTeX document, please add the following line
 - The LaTeX files requires that the LaTeX source to be onThe root of your project needs to be the root of your git repository (due to `gitinfo2`'s design)
 
 # PDF documentation
-Simply download the [PDF manual] of `gitinfo2-latexmk` using the following [link](https://raw.githubusercontent.com/rbarazzutti/gitinfo2-latexmk/bin0.0.1/readme.pdf). This PDF document contains more-or-less the content of this README.
+Simply download the [PDF manual](https://raw.githubusercontent.com/rbarazzutti/gitinfo2-latexmk/bin0.0.1/readme.pdf) of `gitinfo2-latexmk` . This PDF document contains more-or-less the content of this README.
