@@ -5,7 +5,7 @@ Since I'm a user of `latexmk`, I decided to build a small tool that integrates s
 # Setup
 ## Download `gitinfo2.pm`
 
-Simply download [gitinfo2.pm](https://raw.githubusercontent.com/rbarazzutti/gitinfo2-latexmk/v0.0.1/gitinfo.pm) and place at the root folder of your project.
+Simply download [gitinfo2.pm](https://raw.githubusercontent.com/rbarazzutti/gitinfo2-latexmk/0.0.1/gitinfo2.pm) and place at the root folder of your project.
 
 ## Hook in latexmk
 Add the following line at the end of the file `.latexmkrc` that lays at the root folder of your project (create it if it doesn't exist).
