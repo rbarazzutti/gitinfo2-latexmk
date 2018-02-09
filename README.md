@@ -15,7 +15,7 @@ do './gitinfo2.pm';
 ``` 
 
 ## Simply `\usepackage` 
-In your LaTeX document, please add the following line
+In your LaTeX document, please add the following line (feel free to add extra parameters as described in `gitinfo2` [documentation](http://mirror.switch.ch/ftp/mirror/tex/macros/latex/contrib/gitinfo2/gitinfo2.pdf))
 
 ```
 /usepackage{gitinfo2}
