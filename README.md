@@ -10,7 +10,7 @@ Simply download [gitinfo2.pm](https://raw.githubusercontent.com/rbarazzutti/giti
 ## Hook in latexmk
 Add the following line at the end of the file `.latexmkrc` that lays at the root folder of your project (create it if it doesn't exist).
 
-```
+``` sh
 do './gitinfo2.pm';
 ``` 
 
@@ -20,6 +20,19 @@ In your LaTeX document, please add the following line (feel free to add extra pa
 ```
 /usepackage{gitinfo2}
 ```
+
+## Tailoring release tags
+By default, this module will look for release tags that matches the following that starts with a digit (that fit the following regex `"[0-9]*.*"`).
+
+
+You can use a custom release tags matcher, i.e. in case where version number are prefixed with the letter `"v"`, the hook code should be adapted by setting it through the a variable named `GIT2TM_OPTIONS`:
+
+``` sh
+%GI2TM_OPTIONS=(RELEASE_MATCHER=>"v[0-9]*.*");
+do './gitinfo2.pm';
+```
+
+
 # Known-bugs
 - The LaTeX files requires that the LaTeX source to be onThe root of your project needs to be the root of your git repository (due to `gitinfo2`'s design)
 
