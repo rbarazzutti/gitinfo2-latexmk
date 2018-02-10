@@ -1,0 +1,48 @@
+\documentclass[A4]{ltxdoc}
+\usepackage{markdown}   
+\usepackage{fontawesome} 
+\usepackage{hyperref, xcolor}
+\hypersetup{colorlinks=true, linkcolor=myblue, urlcolor=myblue,hyperindex}
+\usepackage{gitinfo2}
+\usepackage{fancyhdr}
+\usepackage{url}
+
+\fancypagestyle{plain}{
+    \fancyhf{} % sets both header and footer to nothing
+    \renewcommand{\headrulewidth}{0pt}
+    \fancyfoot[C]{
+        \faGit \textbullet{}
+            \textsf{Branch: \gitBranch\,@\,\gitAbbrevHash{}
+            Release:\gitReln{} (\gitAuthorDate)}
+        } 
+}
+
+\pagestyle{plain}
+
+ 
+\definecolor{myblue}{rgb}{0.22,0.45,0.70}
+
+\begin{document}
+\thispagestyle{plain}
+\title{gitinfo2 and latexmk integration}
+
+\author{%
+  Raphaël P. Barazzutti\thanks{%
+    URL: \href{https://github.com/rbarazzutti/gitinfo2-latexmk}{github.com/rbarazzutti/gitinfo2-latexmk};
+    Licence: \href{http://latex-project.org/lppl/lppl-1-3c.txt}{LaTeX Project Public License, version 1.3c};
+    E-mail: \href{mailto:raphael.barazzutti@unine.ch}{\tt raphael.barazzutti@unine.ch}.}}
+
+\maketitle
+\thispagestyle{plain}
+\begin{abstract}
+    This tiny piece of software allows a painless and seamless integration of \textsf{gitinfo2} with \textsf{latexmk}. Instead of relying on \textsf{git}'s action hooks, this piece of code is loaded
+    by \textsf{latexmk} when a build is triggered.
+\end{abstract}
+
+\markdownInput{README.md}
+
+
+
+
+
+\end{document}
