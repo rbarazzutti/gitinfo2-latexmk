@@ -1,6 +1,6 @@
 # Copyright 2018 Raphaël P. Barazzutti
 # 
-# GitInfo2LatexMk - 0.0.1
+# GitInfo2LatexMk - v0.1.0
 # Inspired by Brent Longborough's update-git.sh (part of gitinfo2 LaTeX package)
 # 
 # The original update-git.sh is supposed to be "hooked" to some git events (such that
