@@ -1,4 +1,6 @@
 # Copyright 2018 Raphaël P. Barazzutti
+# 
+# GitInfo2LatexMk - 0.0.1
 # Inspired by Brent Longborough's update-git.sh (part of gitinfo2 LaTeX package)
 # 
 # The original update-git.sh is supposed to be "hooked" to some git events (such that
@@ -15,16 +17,26 @@
 # That's it! Now it'd work!
 
 sub git_info_2 {
+    
+
+    my $RELEASE_MATCHER = "[0-9]*.*";
+
+    if(%GI2TM_OPTIONS){        
+        if(exists $GI2TM_OPTIONS{"RELEASE_MATCHER"}){
+            $RELEASE_MATCHER = $GI2TM_OPTIONS{"RELEASE_MATCHER"};
+        }
+    }
+
     my $GIN = ".git/gitHeadInfo.gin";
     my $NGIN = "$GIN.new";
 
     if(length(`git status --porcelain`) == 0){
         # Get the first tag found in the history from the current HEAD
-        $FIRSTTAG = `git describe --tags --always --dirty='-*' 2>/dev/null`;
+        my $FIRSTTAG = `git describe --tags --always --dirty='-*' 2>/dev/null`;
         chop($FIRSTTAG);
 
         # Get the first tag in history that looks like a Release
-        $RELTAG = `git describe --tags --long --always --dirty='-*' --match '[0-9]*.*' 2>/dev/null`;
+        my $RELTAG = `git describe --tags --long --always --dirty='-*' --match '$RELEASE_MATCHER' 2>/dev/null`;
         chop($RELTAG);
 
         # Hoover up the metadata
