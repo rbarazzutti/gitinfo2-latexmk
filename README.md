@@ -40,6 +40,10 @@ do './gitinfo2.pm';
 
 # Known-bugs
 - The root of your project needs to be the root of your git repository (due to `gitinfo2`'s design)
+- Non working properly on Windows (but might work with Cygwin). The Perl module is currently relying on some shell mechanisms that aren't available on Windows.
 
 # PDF documentation
 Simply download the [PDF manual](https://raw.githubusercontent.com/rbarazzutti/gitinfo2-latexmk/doc/readme-v0.1.0.pdf) of `gitinfo2-latexmk` . This PDF document contains more-or-less the content of this README.
+
+# Change log
+- v0.1.0 first release (tested with TeXlive2017 on Debian Linux and on OSX)
