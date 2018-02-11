@@ -57,8 +57,7 @@ sub git_info_2 {
         chop($RELTAG);
 
         # Hoover up the metadata
-        my $metadata =`git --no-pager log -1 --date=short --decorate=short \\
-            --pretty=format:\"\\usepackage[%
+        my $metadata =`git --no-pager log -1 --date=short --decorate=short --pretty=format:\"\\usepackage[%
                 shash={%h},
                 lhash={%H},
                 authname={%an},
