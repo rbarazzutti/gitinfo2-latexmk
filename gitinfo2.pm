@@ -18,9 +18,11 @@
 
 sub git_info_2 {
     
+    # get file content as a string
     my $get_file_content = sub {   
         my ($f)= @_;
 
+        # do not separate the reads per line
         local $/ = undef;
 
         open FILE, $f or return "";
@@ -30,6 +32,7 @@ sub git_info_2 {
         return $string;
     };
 
+    # compare two files`
     my $cmp = sub {
         my($a,$b) = @_;
 
