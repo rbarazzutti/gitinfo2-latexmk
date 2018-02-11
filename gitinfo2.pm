@@ -18,7 +18,7 @@
 
 sub git_info_2 {
     
-    my $lf = sub {   
+    my $get_file_content = sub {   
         my ($f)= @_;
 
         local $/ = undef;
@@ -33,7 +33,7 @@ sub git_info_2 {
     my $cmp = sub {
         my($a,$b) = @_;
 
-        return $lf->($a) ne $lf->($b);
+        return $get_file_content->($a) ne $get_file_content->($b);
     };
 
     my $RELEASE_MATCHER = "[0-9]*.*";
