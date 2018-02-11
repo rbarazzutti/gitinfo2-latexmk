@@ -18,6 +18,23 @@
 
 sub git_info_2 {
     
+    my $lf = sub {   
+        my ($f)= @_;
+
+        local $/ = undef;
+
+        open FILE, $f or return "";
+        $string = <FILE>;
+
+        close FILE;
+        return $string;
+    };
+
+    my $cmp = sub {
+        my($a,$b) = @_;
+
+        return $lf->($a) ne $lf->($b);
+    };
 
     my $RELEASE_MATCHER = "[0-9]*.*";
 
@@ -58,14 +75,16 @@ sub git_info_2 {
                 firsttagdescribe={$FIRSTTAG},
                 reltag={$RELTAG}
             ]{gitexinfo}\" HEAD`;
-      open(my $out,'>',$NGIN);
+      open(my $fh,'>',$NGIN);
       print $fh $metadata;
       close $fh;  
     }else{
         print "GIT UNCLEAN\n";   
     }
 
-    if((-e $GIN || -e $NGIN) && (system("cmp -s $GIN $NGIN") != 0)){
+    $cmp->($GIN,$NGIN    );
+
+    if((-e $GIN || -e $NGIN) && $cmp->($GIN, $NGIN)) {
             print "Status changed, request recompilation\n";
             $go_mode = 1;
             unlink($GIN);
