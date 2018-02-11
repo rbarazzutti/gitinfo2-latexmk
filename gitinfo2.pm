@@ -40,7 +40,7 @@ sub git_info_2 {
         chop($RELTAG);
 
         # Hoover up the metadata
-        system "git --no-pager log -1 --date=short --decorate=short \\
+        my $metadata =`git --no-pager log -1 --date=short --decorate=short \\
             --pretty=format:\"\\usepackage[%
                 shash={%h},
                 lhash={%H},
@@ -57,7 +57,10 @@ sub git_info_2 {
                 refnames={%d},
                 firsttagdescribe={$FIRSTTAG},
                 reltag={$RELTAG}
-            ]{gitexinfo}\" HEAD > $NGIN";
+            ]{gitexinfo}\" HEAD`;
+      open(my $out,'>',$NGIN);
+      print $fh $metadata;
+      close $fh;  
     }else{
         print "GIT UNCLEAN\n";   
     }
