@@ -32,11 +32,11 @@ sub git_info_2 {
 
     if(length(`git status --porcelain`) == 0){
         # Get the first tag found in the history from the current HEAD
-        my $FIRSTTAG = `git describe --tags --always --dirty='-*' 2>/dev/null`;
+        my $FIRSTTAG = `git describe --tags --always --dirty='-*'`;
         chop($FIRSTTAG);
 
         # Get the first tag in history that looks like a Release
-        my $RELTAG = `git describe --tags --long --always --dirty='-*' --match '$RELEASE_MATCHER' 2>/dev/null`;
+        my $RELTAG = `git describe --tags --long --always --dirty='-*' --match '$RELEASE_MATCHER'`;
         chop($RELTAG);
 
         # Hoover up the metadata
