@@ -1,6 +1,6 @@
 # Copyright 2018 Raphaël P. Barazzutti
 # 
-# GitInfo2LatexMk - v0.2.0
+# GitInfo2LatexMk - v0.2.1
 # Inspired by Brent Longborough's update-git.sh (part of gitinfo2 LaTeX package)
 # 
 # The original update-git.sh is supposed to be "hooked" to some git events (such that
@@ -62,7 +62,7 @@ sub git_info_2 {
         # Hoover up the metadata
         my $metadata =`git --no-pager log -1 --date=short --decorate=short --pretty=format:"shash={%h}, lhash={%H}, authname={%an}, authemail={%ae}, authsdate={%ad}, authidate={%ai}, authudate={%at}, commname={%an}, commemail={%ae}, commsdate={%ad}, commidate={%ai}, commudate={%at}, refnames={%d}, firsttagdescribe={$FIRSTTAG}, reltag={$RELTAG} " HEAD`;
         
-        # When running in a subfolder of the repo
+        # When running in a sub-directories of the repo
         my $dir = ".git";
         if (!(-e $dir) and !(-d $dir)) {
             mkdir($dir);
