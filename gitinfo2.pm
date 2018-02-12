@@ -61,6 +61,13 @@ sub git_info_2 {
 
         # Hoover up the metadata
         my $metadata =`git --no-pager log -1 --date=short --decorate=short --pretty=format:"shash={%h}, lhash={%H}, authname={%an}, authemail={%ae}, authsdate={%ad}, authidate={%ai}, authudate={%at}, commname={%an}, commemail={%ae}, commsdate={%ad}, commidate={%ai}, commudate={%at}, refnames={%d}, firsttagdescribe={$FIRSTTAG}, reltag={$RELTAG} " HEAD`;
+        
+        # When running in a subfolder of the repo
+        my $dir = ".git";
+        if (!(-e $dir) and !(-d $dir)) {
+            mkdir($dir);
+        }
+
         open(my $fh,'>',$NGIN);
         print $fh "\\usepackage[".$metadata."]{gitexinfo}\n";
         close $fh;  
