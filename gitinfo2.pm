@@ -49,7 +49,8 @@ sub git_info_2 {
 
     # When running in a sub-directories of the repo
     my $REPOBASE = `git rev-parse --show-toplevel`;
-    chomp $REPOBASE;
+    $REPOBASE =~ s/\s+$//;
+
     my $GITDIR = "$REPOBASE/.git";
 
     my $GIN = "$GITDIR/gitHeadInfo.gin";
@@ -58,11 +59,11 @@ sub git_info_2 {
     if(length(`git status --porcelain`) == 0){
         # Get the first tag found in the history from the current HEAD
         my $FIRSTTAG = `git describe --tags --always --dirty='-*'`;
-        chop($FIRSTTAG);
+        $FIRSTTAG =~ s/\s+$//;
 
         # Get the first tag in history that looks like a Release
         my $RELTAG = `git describe --tags --long --always --dirty='-*' --match '$RELEASE_MATCHER'`;
-        chop($RELTAG);
+        $RELTAG =~ s/\s+$//;
 
         # Hoover up the metadata
         my $metadata =`git --no-pager log -1 --date=short --decorate=short --pretty=format:"shash={%h}, lhash={%H}, authname={%an}, authemail={%ae}, authsdate={%ad}, authidate={%ai}, authudate={%at}, commname={%an}, commemail={%ae}, commsdate={%ad}, commidate={%ai}, commudate={%at}, refnames={%d}, firsttagdescribe={$FIRSTTAG}, reltag={$RELTAG} " HEAD`;
