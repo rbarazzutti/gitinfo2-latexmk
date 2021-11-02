@@ -48,3 +48,7 @@ Simply download the [PDF manual](https://github.com/rbarazzutti/gitinfo2-latexmk
 - v0.1.0 first release (tested with TeXlive2017 on Debian Linux and on OSX)
 - v0.2.0 support for Windows
 - v0.2.1 works in sub-directories too
+
+# License
+
+_gitinfo2-latexmk_ may be distributed and/or modified under the conditions of the LaTeX Project Public License: either version 1.3 of this license, or (at your option) any later version.
