@@ -15,7 +15,7 @@ Since I'm a user of `latexmk`, I decided to build a small tool that integrates s
     ``` 
   
 - In case you want to allow also 'dirty' repositories to be handles, add the following line to your `.latexmkrc` :
-- 
+ 
     ``` sh
     do './gitinfo2.pm -force';
     ``` 
