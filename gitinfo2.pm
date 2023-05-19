@@ -1,3 +1,4 @@
+#!/usr/bin/env perl
 # Copyright 2018 Raphaël P. Barazzutti
 # 
 # GitInfo2LatexMk - v0.2.1
