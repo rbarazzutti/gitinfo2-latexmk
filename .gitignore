@@ -8,3 +8,4 @@
 *.synctex
 *.synctex.gz
 _markdown_*
+.idea
