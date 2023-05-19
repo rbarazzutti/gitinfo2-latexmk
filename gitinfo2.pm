@@ -58,7 +58,13 @@ sub git_info_2 {
         }
     }
 
-    my $GIN = ".git/gitHeadInfo.gin";
+    # When running in a sub-directories of the repo
+    my $REPOBASE = `git rev-parse --show-toplevel`;
+    $REPOBASE =~ s/\s+$//;
+
+    my $GITDIR = "$REPOBASE/.git";
+
+    my $GIN = "$GITDIR/gitHeadInfo.gin";
     my $NGIN = "$GIN.new";
 
     if (length(`git status --porcelain`) == 0 || $force == 1) {
@@ -71,7 +77,7 @@ sub git_info_2 {
         chop($RELTAG);
 
         # Hoover up the metadata
-        my $metadata = `git --no-pager log -1 --date=short --decorate=short --pretty=format:"shash={%h}, lhash={%H}, authname={%an}, authemail={%ae}, authsdate={%ad}, authidate={%ai}, authudate={%at}, commname={%an}, commemail={%ae}, commsdate={%ad}, commidate={%ai}, commudate={%at}, refnames={%d}, firsttagdescribe={$FIRSTTAG}, reltag={$RELTAG} " HEAD`;
+        my $metadata =`git --no-pager log -1 --date=short --decorate=short --pretty=format:"shash={%h}, lhash={%H}, authname={%an}, authemail={%ae}, authsdate={%ad}, authidate={%ai}, authudate={%at}, commname={%an}, commemail={%ae}, commsdate={%ad}, commidate={%ai}, commudate={%at}, refnames={%d}, firsttagdescribe={$FIRSTTAG}, reltag={$RELTAG} " HEAD`;
 
         # When running in a sub-directories of the repo
         my $dir = ".git";
