@@ -13,7 +13,13 @@ Since I'm a user of `latexmk`, I decided to build a small tool that integrates s
     ``` sh
     do './gitinfo2.pm';
     ``` 
-
+  
+- In case you want to allow also 'dirty' repositories to be handles, add the following line to your `.latexmkrc` :
+ 
+    ``` sh
+    do './gitinfo2.pm -force';
+    ``` 
+  
 - Simply use `gitinfo`
     
     In your LaTeX document, please add the following line (feel free to add extra parameters as described in
